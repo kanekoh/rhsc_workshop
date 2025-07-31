@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: devspaces
+  name: nodefeaturediscovery
   namespace: openshift-gitops
   annotations:
     argocd.argoproj.io/sync-wave: "20"
@@ -14,7 +14,7 @@ spec:
   source:
     repoURL: https://github.com/kanekoh/standrized-cluster.git
     targetRevision: main
-    path: nodefeaturedisvocery/overlays/rhdp
+    path: nodefeaturediscovery/overlays/rhdp
   destination:
     namespace: openshift-gitops-operator
     server: https://kubernetes.default.svc
