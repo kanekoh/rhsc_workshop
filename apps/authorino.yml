@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: authorino
+  namespace: openshift-gitops
+  annotations:
+    argocd.argoproj.io/sync-wave: "20"
+spec:
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      allowEmpty: true
+  source:
+    repoURL: https://github.com/kanekoh/standrized-cluster.git
+    targetRevision: main
+    path: authorino/overlays/rhdp
+  destination:
+    namespace: openshift-gitops-operator
+    server: https://kubernetes.default.svc
